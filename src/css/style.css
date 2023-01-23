@@ -154,7 +154,21 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+.product-list .product-card__price {
+  color: rgb(57, 141, 174);
+}
+
+.product-list .product-card__price .disc-ind {
+  color: white;
+  background-color: #f26225;
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+
 /* End product list card */
+
+/* Styles for product details */
 
 .product-detail {
   padding: 1em;
@@ -192,6 +206,8 @@ button {
   text-decoration: line-through;
   font-size: 1.5rem;
 }
+
+/* End product detail */
 
 /* Start cart list card styles */
 .cart-card {
