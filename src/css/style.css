@@ -166,6 +166,33 @@ button {
   width: 100%;
 }
 
+.product-detail h4,
+.product-detail .product-card__price {
+  margin: 10px auto;
+}
+
+.product-detail .product-card__price {
+  font-size: 1.6rem;
+}
+
+.product-detail .product-card__price .final_price {
+  color: red;
+}
+.product-detail .discount_indicator {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.product-detail .discount_indicator .discount-amount {
+  color: green;
+}
+
+.product-detail .product-card__price .suggested_price {
+  text-decoration: line-through;
+  font-size: 1.5rem;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
