@@ -154,6 +154,26 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+/* GREG */
+.product-list .product-card__price {
+  color: rgb(57, 141, 174);
+}
+
+.product-list .product-card__price .disc-ind {
+  color: white;
+  background-color: #f26225;
+  padding: 3px 7px;
+  border-radius: 3px;
+}
+
+
+.product-list .product-card__suggested {
+  font-size: 1rem;
+  text-decoration: line-through;
+}
+/* GREG */
+
 /* End product list card */
 
 .product-detail {
@@ -165,6 +185,37 @@ button {
 .product-detail img {
   width: 100%;
 }
+
+/* Styles for product details GREG */
+
+.product-detail h4,
+.product-detail .product-card__price {
+  margin: 10px auto;
+}
+
+.product-detail .product-card__price {
+  font-size: 1.6rem;
+}
+
+.product-detail .product-card__price .final_price {
+  color: red;
+}
+.product-detail .discount_indicator {
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.product-detail .discount_indicator .discount-amount {
+  color: rgb(8, 118, 8);
+}
+
+.product-detail .product-card__price .suggested_price {
+  text-decoration: line-through;
+  font-size: 1.5rem;
+}
+
+/* Styles for product details GREG */
 
 /* Start cart list card styles */
 .cart-card {
@@ -179,6 +230,7 @@ button {
   grid-row: 1/3;
   grid-column: 1;
 }
+
 .cart-card p {
   margin-top: 0;
 }
