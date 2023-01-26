@@ -103,6 +103,26 @@ button {
   text-align: center;
 }
 
+.cart.active {
+  animation: animateCart 1s linear;
+}
+
+@keyframes animateCart {
+  0% { transform:  rotate(0deg);
+    transform: scale(1.4); 
+    }
+  10% { transform: scale(1.4) rotate(-10deg); }
+  20% { transform: scale(1.4) rotate(10deg); }
+  30% { transform: scale(1.4) rotate(0deg); }
+  40% { transform: scale(1.4) rotate(10deg); }
+  50% { transform: scale(1.4) rotate(-10deg);}
+  60% { transform: scale(1.4) rotate(0deg); }
+  70% { transform: scale(1.4) rotate(-10deg); }
+  80% { transform: scale(1.4) rotate(10deg); }
+  90% { transform: scale(1) rotate(0deg);}
+  100% { transform: scale(1) rotate(-10deg);}
+}
+
 .cart svg {
   width: 25px;
 }
@@ -214,6 +234,40 @@ button {
   text-decoration: line-through;
   font-size: 1.5rem;
 }
+
+/* flying image add to cart animation */
+.product-detail .divider.flying-img {
+  position: absolute;
+  width: var(--width);
+  left: var(--left);
+  top: var(--top);
+  border-bottom: 0px;
+  opacity: .5;
+  animation: fly_to_cart .5s linear;
+}
+
+@keyframes fly_to_cart {
+  0% {
+    left: var(--left);
+    top: var(--top);
+  }
+
+  40% {
+
+    transform: scale(.4);
+  }
+  80% {
+
+    transform: scale(.2);
+  }
+
+  100% {
+
+    transform: scale(.1);
+  }
+
+}
+
 
 /* Styles for product details GREG */
 

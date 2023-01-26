@@ -21,7 +21,17 @@ function productDetailsDisplay(product) {
       </p>
       <div class='product-detail__add'>
         <button id='addToCart' data-id='${product.Id}'>Add to Cart</button>
-      </div></section>`;
+      </div>
+
+      <!-- animated flying image 
+      <img
+      class='divider image active'
+      src='${product.Image}'
+      alt='${product.NameWithoutBrand}'
+      /> 
+      -->
+      
+      </section>`;
   }
 
 export default class ProductDetails {
@@ -39,6 +49,7 @@ export default class ProductDetails {
   }
 
   addToCart() {
+    flyToCart()
     setLocalStorage('so-cart', this.product);
   }
 
@@ -49,4 +60,27 @@ export default class ProductDetails {
       productDetailsDisplay(this.product)
     );
   }
+}
+
+function flyToCart() {
+  const elementParent = document.querySelector('.product-detail');
+  const cartElement = document.querySelector('.cart');
+  const productImg = document.querySelector('.product-detail > img.divider');
+  const boundingCart = cartElement.getBoundingClientRect();
+  const boundingImage = productImg.getBoundingClientRect();
+  const xDistance = boundingCart.left - boundingImage.left;
+  const yDistance = boundingImage.top - boundingCart.top;
+  console.log(boundingImage)
+
+  //clone the image
+  const imageClone = productImg.cloneNode();
+  imageClone.classList.add('flying-img');
+  elementParent.appendChild(imageClone);
+  //set var
+  //let top = (boundingImage.height + boundingImage.top).toFixed(2)
+  imageClone.style.cssText = `
+    --width : ${boundingImage.width.toFixed(2)}px;
+    --left : ${boundingImage.left.toFixed(2)}px;
+    --top : ${boundingImage.bottom - 169}px;
+  `;
 }
