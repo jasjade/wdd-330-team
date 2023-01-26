@@ -1,6 +1,8 @@
 import { setLocalStorage } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
+    let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
+    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
     return `<section class='product-detail'> <h3>${product.Brand.Name}</h3>
       <h2 class='divider'>${product.NameWithoutBrand}</h2>
       <img
@@ -8,7 +10,11 @@ function productDetailsDisplay(product) {
         src='${product.Image}'
         alt='${product.NameWithoutBrand}'
       />
-      <p class='product-card__price'>$${product.FinalPrice}</p>
+      <!-- FROM GREG -->
+      <h4 class="price_header">Final Price</h4>
+      <p class="product-card__price"><span class="final_price"><strong>$${product.FinalPrice}</strong></span>&nbsp; &nbsp;<span class="suggested_price">$${product.SuggestedRetailPrice.toFixed(2)}</span></p>
+      <p class="discount_indicator">You saved: <span class="discount-amount">$${discountDollars.toFixed(2)} (${discountPercent.toFixed(2)}%)</span></p>
+      <!-- FROM GREG -->
       <p class='product__color'>${product.Colors[0].ColorName}</p>
       <p class='product__description'>
       ${product.DescriptionHtmlSimple}
@@ -35,8 +41,6 @@ export default class ProductDetails {
   addToCart() {
     setLocalStorage('so-cart', this.product);
   }
-
-  
 
   renderProductDetails(selector) {
     const element = document.querySelector(selector);
