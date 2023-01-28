@@ -103,8 +103,8 @@ button {
   text-align: center;
 }
 
-.cart.active {
-  animation: animateCart 1s linear;
+.cart.shake svg{
+  animation: animateCart 1.2s linear .8s;
 }
 
 @keyframes animateCart {
@@ -121,6 +121,58 @@ button {
   80% { transform: scale(1.4) rotate(10deg); }
   90% { transform: scale(1) rotate(0deg);}
   100% { transform: scale(1) rotate(-10deg);}
+}
+
+/* flying image add to cart animation */
+.cart .divider.flying-img {
+  position: absolute;
+  width: var(--width);
+  left: var(--left);
+  top: var(--top);
+  border-bottom: 0px;
+  max-width: unset;
+  animation: fly_to_cart .7s linear;
+}
+
+@keyframes fly_to_cart {
+  0% {
+    opacity: .5;
+  }
+
+  20% {
+    left: calc(var(--left)*.8);
+    top: calc(var(--top)*.8);
+    width: calc(var(--width)*.8);
+  }
+
+  40% {
+    left: calc(var(--left)*.6);
+    top: calc(var(--top)*.6);
+    width: calc(var(--width)*.6);
+    opacity: .4;
+  }
+
+  60% {
+    left: calc(var(--left)*.4);
+    top: calc(var(--top)*.4);
+    width: calc(var(--width)*.2);
+    opacity: .3;
+  }
+
+  80% {
+    left: calc(var(--left)*.2);
+    top: calc(var(--top)*.2);
+    width: calc(var(--width)*.2);
+    opacity: .2;
+  }
+
+  100% {
+    left: calc(var(--left)*0);
+    top: calc(var(--top)*0);
+    width: calc(var(--width)*0);
+    opacity: .1;
+  }
+
 }
 
 .cart svg {
@@ -234,40 +286,6 @@ button {
   text-decoration: line-through;
   font-size: 1.5rem;
 }
-
-/* flying image add to cart animation */
-.product-detail .divider.flying-img {
-  position: absolute;
-  width: var(--width);
-  left: var(--left);
-  top: var(--top);
-  border-bottom: 0px;
-  opacity: .5;
-  animation: fly_to_cart .5s linear;
-}
-
-@keyframes fly_to_cart {
-  0% {
-    left: var(--left);
-    top: var(--top);
-  }
-
-  40% {
-
-    transform: scale(.4);
-  }
-  80% {
-
-    transform: scale(.2);
-  }
-
-  100% {
-
-    transform: scale(.1);
-  }
-
-}
-
 
 /* Styles for product details GREG */
 
