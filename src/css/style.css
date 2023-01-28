@@ -103,6 +103,78 @@ button {
   text-align: center;
 }
 
+.cart.shake svg{
+  animation: animateCart 1.2s linear .8s;
+}
+
+@keyframes animateCart {
+  0% { transform:  rotate(0deg);
+    transform: scale(1.4); 
+    }
+  10% { transform: scale(1.4) rotate(-10deg); }
+  20% { transform: scale(1.4) rotate(10deg); }
+  30% { transform: scale(1.4) rotate(0deg); }
+  40% { transform: scale(1.4) rotate(10deg); }
+  50% { transform: scale(1.4) rotate(-10deg);}
+  60% { transform: scale(1.4) rotate(0deg); }
+  70% { transform: scale(1.4) rotate(-10deg); }
+  80% { transform: scale(1.4) rotate(10deg); }
+  90% { transform: scale(1) rotate(0deg);}
+  100% { transform: scale(1) rotate(-10deg);}
+}
+
+/* flying image add to cart animation */
+.cart .divider.flying-img {
+  position: absolute;
+  width: var(--width);
+  left: var(--left);
+  top: var(--top);
+  border-bottom: 0px;
+  max-width: unset;
+  animation: fly_to_cart .7s linear;
+}
+
+@keyframes fly_to_cart {
+  0% {
+    opacity: .5;
+  }
+
+  20% {
+    left: calc(var(--left)*.8);
+    top: calc(var(--top)*.8);
+    width: calc(var(--width)*.8);
+  }
+
+  40% {
+    left: calc(var(--left)*.6);
+    top: calc(var(--top)*.6);
+    width: calc(var(--width)*.6);
+    opacity: .4;
+  }
+
+  60% {
+    left: calc(var(--left)*.4);
+    top: calc(var(--top)*.4);
+    width: calc(var(--width)*.2);
+    opacity: .3;
+  }
+
+  80% {
+    left: calc(var(--left)*.2);
+    top: calc(var(--top)*.2);
+    width: calc(var(--width)*.2);
+    opacity: .2;
+  }
+
+  100% {
+    left: calc(var(--left)*0);
+    top: calc(var(--top)*0);
+    width: calc(var(--width)*0);
+    opacity: .1;
+  }
+
+}
+
 .cart svg {
   width: 25px;
 }
