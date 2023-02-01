@@ -11,7 +11,7 @@ function productCardTemplate(product) {
 
     //computing the discount in amount and percentage -GREG
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
-    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
+    let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
     
     // I have also included the discount details in the template -GREG
 

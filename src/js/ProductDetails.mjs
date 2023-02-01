@@ -2,7 +2,7 @@ import { setLocalStorage } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
-    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
+    let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
     return `<section class='product-detail'> <h3>${product.Brand.Name}</h3>
       <h2 class='divider'>${product.NameWithoutBrand}</h2>
       <img
@@ -77,7 +77,7 @@ function flyToCart() {
   const imageClone = productImg.cloneNode();
   imageClone.classList.add('flying-img');
   cartElement.appendChild(imageClone);
-  cartElement.classList.add("shake");
+  cartElement.classList.add('shake');
   //set var
   imageClone.style.cssText = `
     --width : ${boundingImage.width.toFixed(2)}px;
@@ -87,7 +87,7 @@ function flyToCart() {
 
   setTimeout(() => {
     cartElement.removeChild(imageClone);
-    cartElement.classList.remove("shake");
+    cartElement.classList.remove('shake');
 }, 2000);
 
 }
