@@ -10,5 +10,8 @@ const listElement = document.querySelector('.product-list');
 const productList = new ProductList ('Tents', dataSource, listElement);
 
 //check list of products in the console
-productList.init()
+productList.init();
+
+// let x = returnCartItems(['so-cart', 'do-cart'])
+// console.log(x)
 

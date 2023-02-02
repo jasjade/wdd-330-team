@@ -103,6 +103,18 @@ button {
   text-align: center;
 }
 
+.cart::after {
+  position: absolute;
+  content: var(--item);
+  top: 5px;
+  right: -5px;
+  background-color: var(--primary-color);
+  height: 21px;
+  width: 21px;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
 .cart.shake svg{
   animation: animateCart 1.2s linear .8s;
 }
