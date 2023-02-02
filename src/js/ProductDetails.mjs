@@ -2,7 +2,7 @@ import { setLocalStorage } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
-    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
+    let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
     return `<section class='product-detail'> <h3>${product.Brand.Name}</h3>
       <h2 class='divider'>${product.NameWithoutBrand}</h2>
       <img
@@ -77,7 +77,7 @@ function flyToCart() {
   const imageClone = productImg.cloneNode();
   imageClone.classList.add('flying-img');
   cartElement.appendChild(imageClone);
-  cartElement.classList.add("shake");
+  cartElement.classList.add('shake');
   //set var
   imageClone.style.cssText = `
     --width : ${boundingImage.width.toFixed(2)}px;
@@ -87,7 +87,7 @@ function flyToCart() {
 
   setTimeout(() => {
     cartElement.removeChild(imageClone);
-    cartElement.classList.remove("shake");
+    cartElement.classList.remove('shake');
 }, 2000);
 
 }
@@ -102,64 +102,4 @@ function flyToCart() {
 
 
 
-
-/*
-
-  imageClone.style.cssText = `
-    --width : ${boundingImage.width.toFixed(2)}px;
-    --left : ${boundingImage.left}px;
-    --top : ${(boundingImage.top - boundingBody.top).toFixed(2)}px;
-    --xa : ${(xDistance*.20).toFixed(2)}px;
-    --xb : ${(xDistance*.40).toFixed(2)}px;
-    --xc : ${(xDistance*.60).toFixed(2)}px;
-    --xd : ${(xDistance*.80).toFixed(2)}px;
-    --xe : ${xDistance.toFixed(2)}px;
-    --ya : ${(yDistance*.20).toFixed(2)}px;
-    --yb : ${(yDistance*.40).toFixed(2)}px;
-    --yc : ${(yDistance*.60).toFixed(2)}px;
-    --yd : ${(yDistance*.80).toFixed(2)}px;
-    --ye : ${yDistance.toFixed(2)}px;
-  `;
-
-
-@keyframes fly_to_cart {
-  0% {
-    left: var(--left);
-    top: var(--top);
-  }
-
-  20% {
-    left: calc(var(--left) + var(--xa));
-    top: calc(var(--top) - var(--ya));
-    transform: scale(.8);
-  }
-
-  40% {
-    left: calc(var(--left) + var(--xb));
-    top: calc(var(--top) - var(--yb));
-    transform: scale(.6);
-  }
-
-  60% {
-    left: calc(var(--left) + var(--xc));
-    top: calc(var(--top) - var(--yc));
-    transform: scale(.4);
-  }
-
-  80% {
-    left: calc(var(--left) + var(--xd));
-    top: calc(var(--top) - var(--yd));
-    transform: scale(.2);
-
-  }
-
-  100% {
-    left: calc(var(--left) + var(--xe));
-    top: calc(var(--top) - var(--ye));
-    transform: scale(.001);
-  }
-
-}
-
-*/
 
