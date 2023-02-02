@@ -1,4 +1,4 @@
-import { setLocalStorage } from '../js/utils.mjs';
+import { getLocalStorage, setLocalStorage } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
@@ -50,8 +50,29 @@ export default class ProductDetails {
   }
 
   addToCart() {
+    let Data = getLocalStorage('so-cart');
+      if (Data) {
+        let tent = 1;
+        for (let i = 0; i < Data.length; i++) {
+          if (Data[i].Id == this.productId) {
+            
+            Data[i].quantity++;
+            tent = 0;
+          }
+        }
+        if (tent == 1) {
+          this.product.quantity = 1;
+          Data.push(this.product);
+        }
+      } else {
+        Data = [];
+        this.product.quantity = 1;
+        Data.push(this.product);
+      }
+      setLocalStorage('so-cart', Data);
+    
     flyToCart()
-    setLocalStorage('so-cart', this.product);
+    //setLocalStorage('so-cart', this.product);
   }
 
   renderProductDetails(selector) {
@@ -89,7 +110,6 @@ function flyToCart() {
     cartElement.removeChild(imageClone);
     cartElement.classList.remove('shake');
 }, 2000);
-
 }
 
 
@@ -103,3 +123,63 @@ function flyToCart() {
 
 
 
+
+/*
+
+  imageClone.style.cssText = `
+    --width : ${boundingImage.width.toFixed(2)}px;
+    --left : ${boundingImage.left}px;
+    --top : ${(boundingImage.top - boundingBody.top).toFixed(2)}px;
+    --xa : ${(xDistance*.20).toFixed(2)}px;
+    --xb : ${(xDistance*.40).toFixed(2)}px;
+    --xc : ${(xDistance*.60).toFixed(2)}px;
+    --xd : ${(xDistance*.80).toFixed(2)}px;
+    --xe : ${xDistance.toFixed(2)}px;
+    --ya : ${(yDistance*.20).toFixed(2)}px;
+    --yb : ${(yDistance*.40).toFixed(2)}px;
+    --yc : ${(yDistance*.60).toFixed(2)}px;
+    --yd : ${(yDistance*.80).toFixed(2)}px;
+    --ye : ${yDistance.toFixed(2)}px;
+  `;
+
+
+@keyframes fly_to_cart {
+  0% {
+    left: var(--left);
+    top: var(--top);
+  }
+
+  20% {
+    left: calc(var(--left) + var(--xa));
+    top: calc(var(--top) - var(--ya));
+    transform: scale(.8);
+  }
+
+  40% {
+    left: calc(var(--left) + var(--xb));
+    top: calc(var(--top) - var(--yb));
+    transform: scale(.6);
+  }
+
+  60% {
+    left: calc(var(--left) + var(--xc));
+    top: calc(var(--top) - var(--yc));
+    transform: scale(.4);
+  }
+
+  80% {
+    left: calc(var(--left) + var(--xd));
+    top: calc(var(--top) - var(--yd));
+    transform: scale(.2);
+
+  }
+
+  100% {
+    left: calc(var(--left) + var(--xe));
+    top: calc(var(--top) - var(--ye));
+    transform: scale(.001);
+  }
+
+}
+
+*/
