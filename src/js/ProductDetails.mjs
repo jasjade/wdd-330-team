@@ -1,8 +1,8 @@
-import { setLocalStorage } from '../js/utils.mjs';
+import { getLocalStorage, setLocalStorage } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
-    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
+    let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
     return `<section class='product-detail'> <h3>${product.Brand.Name}</h3>
       <h2 class='divider'>${product.NameWithoutBrand}</h2>
       <img
@@ -50,8 +50,29 @@ export default class ProductDetails {
   }
 
   addToCart() {
+    let Data = getLocalStorage('so-cart');
+      if (Data) {
+        let tent = 1;
+        for (let i = 0; i < Data.length; i++) {
+          if (Data[i].Id == this.productId) {
+            
+            Data[i].quantity++;
+            tent = 0;
+          }
+        }
+        if (tent == 1) {
+          this.product.quantity = 1;
+          Data.push(this.product);
+        }
+      } else {
+        Data = [];
+        this.product.quantity = 1;
+        Data.push(this.product);
+      }
+      setLocalStorage('so-cart', Data);
+    
     flyToCart()
-    setLocalStorage('so-cart', this.product);
+    //setLocalStorage('so-cart', this.product);
   }
 
   renderProductDetails(selector) {
@@ -77,7 +98,7 @@ function flyToCart() {
   const imageClone = productImg.cloneNode();
   imageClone.classList.add('flying-img');
   cartElement.appendChild(imageClone);
-  cartElement.classList.add("shake");
+  cartElement.classList.add('shake');
   //set var
   imageClone.style.cssText = `
     --width : ${boundingImage.width.toFixed(2)}px;
@@ -87,10 +108,10 @@ function flyToCart() {
 
   setTimeout(() => {
     cartElement.removeChild(imageClone);
-    cartElement.classList.remove("shake");
+    cartElement.classList.remove('shake');
 }, 2000);
-
 }
+
 
 
 
