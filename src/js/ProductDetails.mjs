@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage, returnCartItems, renderCartSuperscript } from '../js/utils.mjs';
 
-//import { getLocalStorage, setLocalStorage } from '../js/utils.mjs';
+//import { getLocalStorage, setLocalStorage } from '../js/utils.mjs'; --
 
 
 function productDetailsDisplay(product) {
