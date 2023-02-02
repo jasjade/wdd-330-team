@@ -11,7 +11,7 @@ function productCardTemplate(product) {
 
     //computing the discount in amount and percentage -GREG
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
-    let discountPercent = (discountDollars/product.SuggestedRetailPrice) * 100
+    let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
     
     // I have also included the discount details in the template -GREG
 
@@ -24,8 +24,8 @@ function productCardTemplate(product) {
     />
     <h3 class="card__brand">${product.Brand.Name}</h3>
     <h2 class="card__name">${product.Name}</h2>
-    <p class="product-card__price"><strong>${product.FinalPrice.toFixed(2)}</strong> &nbsp; <span class="disc-ind">-${discountPercent.toFixed(2)}%</span></p>
-    <p class="product-card__suggested"><em>${product.SuggestedRetailPrice.toFixed(2)}</em></p>
+    <p class="product-card__price"><strong>$${product.FinalPrice.toFixed(2)}</strong> &nbsp; <span class="disc-ind">-${discountPercent.toFixed(2)}%</span></p>
+    <p class="product-card__suggested"><em>$${product.SuggestedRetailPrice.toFixed(2)}</em></p>
     </a>
   </li>`;
   }   
