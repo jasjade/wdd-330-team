@@ -50,7 +50,14 @@ export function renderListWithTemplate(
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
-//this.listElement: The element we want to insert the new HTML into is being provided by the class
+
+export function renderCartSuperscript(data) {
+  const cartSuperscript = document.querySelector("header .cart");
+  cartSuperscript.style.cssText = `--item : '${data}';`
+  //superscriptContainer.innerHTML = `${data}`;
+  //superscriptContainer.setAttribute('data-product-count', data);
+  //cartElement.style.cssText = `--item : '${data}';`
+}
  
 export function renderWithTemplate(
   template,
@@ -64,7 +71,19 @@ export function renderWithTemplate(
   }
 }
 
-//this.listElement: The element we want to insert the new HTML into is being provided by the class
+export function returnCartItems(keys) {
+  let cartItems = [];
+  keys.forEach(key => {
+    let innerCart = getLocalStorage(key);
+    if (innerCart) {
+      innerCart.forEach( item => cartItems.push(item));
+    }
+  });
+
+  return cartItems
+}
+
+
 async function loadTemplate(path) {
   const res = await fetch(path);
   const template = await res.text();
@@ -76,7 +95,8 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector('#main-header');
   const footerTemplate = await loadTemplate('../partials/footer.html');
   const footerElement = document.querySelector('#main-footer');
+  const cartQuantity = returnCartItems(['so-cart']).length;
 
-  renderWithTemplate(headerTemplate, headerElement);
+  renderWithTemplate(headerTemplate, headerElement, cartQuantity, renderCartSuperscript);
   renderWithTemplate(footerTemplate, footerElement);
 }

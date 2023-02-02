@@ -1,4 +1,4 @@
-import { setLocalStorage } from '../js/utils.mjs';
+import { setLocalStorage, returnCartItems, renderCartSuperscript } from '../js/utils.mjs';
 
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
@@ -72,6 +72,7 @@ function flyToCart() {
   const boundingImage = productImg.getBoundingClientRect();
   const xDistance = boundingCart.left - boundingImage.left;
   const yDistance = boundingImage.top - boundingCart.top;
+  const cartQuantity = returnCartItems(['so-cart', 'do-cart']).length;
 
   //clone the image
   const imageClone = productImg.cloneNode();
@@ -88,8 +89,9 @@ function flyToCart() {
   setTimeout(() => {
     cartElement.removeChild(imageClone);
     cartElement.classList.remove('shake');
+    renderCartSuperscript(cartQuantity + 1)
 }, 2000);
-
+  
 }
 
 
