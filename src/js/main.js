@@ -1,7 +1,7 @@
 import ProductData from './ProductData.mjs';
 import ProductList  from './ProductList.mjs';
 import  { loadHeaderFooter }  from './utils.mjs';
-console.log('no paso :(')
+//console.log('no paso :(')
 loadHeaderFooter();
 
 const dataSource = new ProductData('tents');
@@ -12,6 +12,4 @@ const productList = new ProductList ('Tents', dataSource, listElement);
 //check list of products in the console
 productList.init();
 
-// let x = returnCartItems(['so-cart', 'do-cart'])
-// console.log(x)
 

@@ -17,9 +17,9 @@ export function setLocalStorage(key, data) {
   // existingData.push(data)
   // //console.log(existingData)
   // localStorage.setItem(key, JSON.stringify(existingData));
+  //code above refactored and added to add to cart ProductDetails.mjs -Greg
 
   localStorage.setItem(key, JSON.stringify(data));
-  //console.log(`from stringify ${JSON.stringify(data)}`)
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
@@ -71,16 +71,20 @@ export function renderWithTemplate(
   }
 }
 
-export function returnCartItems(keys) {
-  let cartItems = [];
-  keys.forEach(key => {
-    let innerCart = getLocalStorage(key);
-    if (innerCart) {
-      innerCart.forEach( item => cartItems.push(item));
-    }
+export function returnCartTotalQuantities(key) {
+  let cartItems = getLocalStorage(key) || [];
+  let cartTotalQuantity = 0
+  // keys.forEach(key => {
+  //   let innerCart = getLocalStorage(key);
+  //   if (innerCart) {
+  //     innerCart.forEach( item => cartItems.push(item));
+  //   }
+  // });
+  cartItems.forEach(item => {
+    cartTotalQuantity += item.quantity;
   });
 
-  return cartItems
+  return cartTotalQuantity
 }
 
 
@@ -95,8 +99,9 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector('#main-header');
   const footerTemplate = await loadTemplate('../partials/footer.html');
   const footerElement = document.querySelector('#main-footer');
-  const cartQuantity = returnCartItems(['so-cart']).length;
+  const cartTotalQuantity = returnCartTotalQuantities('so-cart');
+  //const cartQuantity = returnCartItems(['so-cart']).length;
 
-  renderWithTemplate(headerTemplate, headerElement, cartQuantity, renderCartSuperscript);
+  renderWithTemplate(headerTemplate, headerElement, cartTotalQuantity, renderCartSuperscript);
   renderWithTemplate(footerTemplate, footerElement);
 }
