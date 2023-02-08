@@ -1,3 +1,20 @@
+import  { loadHeaderFooter }  from './utils.mjs';
+//console.log('no paso :(')
+loadHeaderFooter();
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 import ProductData from './ProductData.mjs';
 import ProductList  from './ProductList.mjs';
 import  { loadHeaderFooter }  from './utils.mjs';
@@ -11,5 +28,10 @@ const productList = new ProductList ('Tents', dataSource, listElement);
 
 //check list of products in the console
 productList.init();
+
+*/
+
+
+
 
 
