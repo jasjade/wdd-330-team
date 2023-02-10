@@ -18,12 +18,7 @@ export default class ProductData {
 
   //new getData from API
   async getData(category) {
-    const response = await fetch(baseURL + `products/search/${category}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'text/plain'
-      }
-    });
+    const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;
   }
