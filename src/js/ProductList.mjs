@@ -15,7 +15,7 @@ function productCardTemplate(product) {
     
     // I have also included the discount details in the template -GREG
 
-    if (UrlExists(product.Images)) {
+    //if (UrlExists(product.Images)) {
     return `<li class="product-card">
     <a href="/product_pages/index.html?product=${product.Id}">
     <img
@@ -28,7 +28,7 @@ function productCardTemplate(product) {
     <p class="product-card__suggested"><em>$${product.SuggestedRetailPrice.toFixed(2)}</em></p>
     </a>
   </li>`;
-  }   
+  //}   
 }
 
 
