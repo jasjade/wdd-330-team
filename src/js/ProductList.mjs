@@ -47,6 +47,14 @@ export default class ProductList {
       const list = await this.dataSource.getData(this.category);
       // render the list 
       this.renderList(list);
+
+      //Manually set the breadcrumbs -Greg
+      const breadcrumbsHome = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.home');
+      breadcrumbsHome.innerHTML =`<a href="/">Home</a>`;
+
+      const breadcrumbsCategory = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.category');
+      console.log(list)
+      breadcrumbsCategory.innerHTML = `${this.category.charAt(0).toUpperCase() + this.category.slice(1)} (${list.length} items)`;
     }
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
