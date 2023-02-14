@@ -6,7 +6,7 @@ import { getLocalStorage, setLocalStorage, returnCartTotalQuantities, renderCart
 function productDetailsDisplay(product) {
     let discountDollars = product.SuggestedRetailPrice - product.FinalPrice
     let discountPercent = (discountDollars / product.SuggestedRetailPrice) * 100
-    return `<section class='product-detail'> <h3>${product.Brand.Name}</h3>
+    return `<h3>${product.Brand.Name}</h3>
       <h2 class='divider'>${product.NameWithoutBrand}</h2>
       <img
         class='divider'
@@ -32,9 +32,7 @@ function productDetailsDisplay(product) {
       src='${product.Image}'
       alt='${product.NameWithoutBrand}'
       /> 
-      -->
-      
-      </section>`;
+      -->`;
   }
 
 export default class ProductDetails {
@@ -45,7 +43,32 @@ export default class ProductDetails {
   }
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
-    this.renderProductDetails('main');
+    console.log(this.product);
+    //I will change the 'main' selector to 'product-detail'
+    // because int the product-pages/index.html
+    // we already have this section prepared
+    //<section class="product-detail"></section>
+    //changing this:
+    //this.renderProductDetails('main');
+    //to this:
+    this.renderProductDetails('.product-detail');
+    //upon changing the selector, we will need to remove 
+    //<section class='product-detail'> opening and  </section> closing 
+    //in the productDetailsDisplay function 
+    // NOTES FROM GREG ABOVE
+
+    //Manually set the breadcrumbs -Greg
+    const breadcrumbsHome = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.home');
+    console.log(window.location.hostname)
+    breadcrumbsHome.innerHTML =`<a href="/">Home</a>`;
+
+    const breadcrumbsCategory = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.category');
+    breadcrumbsCategory.innerHTML = `<a href="/product-listing/index.html?category=${this.product.Category}">${this.product.Category.charAt(0).toUpperCase() + this.product.Category.slice(1)}</a>`;
+
+    const breadcrumbsProductName = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.product-name');
+    breadcrumbsProductName.innerHTML = this.product.NameWithoutBrand;
+
+
     //flyToCart()
     document
       .getElementById('addToCart')

@@ -19,3 +19,11 @@ listing.init();
 //Change the header based on the category
 const productHeader = document.querySelector('.products > h2');
 productHeader.innerHTML = `Top Products: ${category.charAt(0).toUpperCase() + category.slice(1)}`
+
+//Manually set the breadcrumbs -Greg
+//I have transferred this feature in ProductListmjs init
+
+/*
+https://stackoverflow.com/questions/18998797/create-breadcrumbs-dynamically-on-client-side-using-javascript
+
+*/

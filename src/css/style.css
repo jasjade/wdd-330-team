@@ -195,6 +195,43 @@ button {
   fill: gray;
 }
 
+/* Start Breadcrumb Styles Greg */
+.breadcrumbs-container .breadcrumbs-ul {
+  display: flex;
+  padding-left: 0px;
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li::after {
+  content: ">>";
+  margin-left: 6px;
+  color: #f0a868;
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li a {
+  text-decoration: none;
+  color: #303030;
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li:hover a {
+  text-decoration:underline;
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li:last-child::after {
+  content: "";
+}
+
+.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li:last-child {
+  color: #303030a8;
+}
+
+
+/* End Breadcrumb Styles Greg */
+
 /* End cart icon styles */
 
 /* product grid styles */
