@@ -90,6 +90,7 @@ button {
   border: 0;
   font-size: var(--large-font);
   cursor: pointer;
+  margin: .5em auto;
 }
 .divider {
   border-bottom: 2px solid var(--primary-color);
@@ -297,9 +298,7 @@ button {
 
 
 /* new css */
-.list-total {
-  text-align: right;
-}
+
 .list-footer {
   display: flex;
   justify-content: space-between;
@@ -313,6 +312,9 @@ button {
   text-decoration: none;
   border-radius: 5px;
 }
+.list-total {
+  text-align: right;
+}
 .list-footer a:link,
 .list-footer a:visited {
   color: var(--dark-grey);
@@ -322,12 +324,21 @@ button {
 .checkout-form {
   padding: 0.5em;
 }
+.checkout-form legend {
+  font-weight: bold;
+  font-size: 1.2em;
+}
 .checkout-form label {
-  display: block;
+  display:inline-block;
 }
 .checkout-form input {
   width: 100%;
-  font-size: 1.2em;
+  font-size: 1em;
+  padding: 0.2em;
+  margin: .2em auto 1.2em auto;
+}
+.checkout-form fieldset {
+  margin: 1em auto;
 }
 
 .checkout-summary > ul {
