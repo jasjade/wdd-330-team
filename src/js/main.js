@@ -1,17 +1,6 @@
-import  { loadHeaderFooter }  from './utils.mjs';
+import { loadHeaderFooter } from "./utils.mjs";
 //console.log('no paso :(')
 loadHeaderFooter();
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 
@@ -30,8 +19,3 @@ const productList = new ProductList ('Tents', dataSource, listElement);
 productList.init();
 
 */
-
-
-
-
-

@@ -1,6 +1,6 @@
-import { getParam, loadHeaderFooter } from './utils.mjs';
-import ProductData from './ProductData.mjs';
-import ProductDetails from './ProductDetails.mjs';
+import { getParam, loadHeaderFooter } from "./utils.mjs";
+import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductDetails.mjs";
 
 loadHeaderFooter();
 
@@ -8,11 +8,9 @@ loadHeaderFooter();
 //const dataSource = new ProductData('tents');
 //removing the 'tents'
 const dataSource = new ProductData();
-const productId = getParam('product');
+const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 product.init();
 
-//Manually set the breadcrumbs feature is done via init in 
+//Manually set the breadcrumbs feature is done via init in
 //ProductDetails class
-
-
