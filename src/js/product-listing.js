@@ -1,12 +1,12 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 //console.log('no paso :(')
 loadHeaderFooter();
 
 const category = getParam("category");
-// first create an instance of our ProductData class.
-const dataSource = new ProductData();
+// first create an instance of our ExternalServices class.
+const dataSource = new ExternalServices();
 // then get the element we want the product list to render in
 //listElement is the element from the HTML were the cards will be placed
 const element = document.querySelector(".product-list");

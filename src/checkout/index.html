@@ -17,6 +17,57 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
+        <form method="post" name="checkout">
+        <fieldset>
+          <legend>Shipping</legend>
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" required>
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" required>
+          <label for="street">Street</label>
+          <input type="text" id="street" name="street" required>
+          <label for="city">City</label>
+          <input type="text" id="city" name="city" required>
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" required>
+          <label for="zip">Zip</label>
+          <input type="text" id="zip" name="zip" required>
+        </fieldset>
+        <fieldset>
+          <legend>Payment</legend>
+          <label for="cardNumber">Card number</label>
+          <input type="number" id="ccnum" name= "cardNumber" minlength="16" maxlength="16" required>
+          <label for="expiration">Expiration</label>
+          <input type="date" id="expdate" name="expiration" required>
+          <label for="code">Security Code</label>
+          <input type="number" id="code" name="code" required>
+        </fieldset>
+        <fieldset>
+          <legend>Order Summary</legend>
+          <ul>
+            <li>
+              <label for="cartTotal">Item Subtotal(<span id="num-items"></span>)</label>
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+            <li>
+              <label for="shipping">Shipping Estimate</label>
+              <p id="shipping"></p>
+            </li>
+            <li>
+              <label for="tax">Tax</label>
+              <p id="tax"></p>
+            </li>
+            <li>
+              <label for="orderTotal"><b>Order Total</b></label>
+              <p id="orderTotal"></p>
+            </li>
+          </ul>
+
+
+
+        </fieldset>
+        <button id="checkoutSubmit" type="submit">Checkout</button>
+      </form>
       </section>
     </main>
 
