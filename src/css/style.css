@@ -195,7 +195,12 @@ button {
   fill: gray;
 }
 
+/* End cart icon styles */
+
 /* Start Breadcrumb Styles Greg */
+.breadcrumbs-container {
+  padding: 0 18px;
+}
 .breadcrumbs-container .breadcrumbs-ul {
   display: flex;
   padding-left: 0px;
@@ -232,7 +237,6 @@ button {
 
 /* End Breadcrumb Styles Greg */
 
-/* End cart icon styles */
 
 /* product grid styles */
 .product-grid {
@@ -291,6 +295,7 @@ button {
   color: var(--dark-grey);
 }
 /* Styles for product lists */
+
 .product-card {
   flex: 1 1 45%;
   margin: 0.25em;
@@ -335,6 +340,11 @@ button {
 }
 /* GREG */
 
+/* Product quic view button */
+.quick-view-button {
+  margin: 20px auto;
+}
+
 /* End product list card */
 
 .product-detail {
@@ -377,6 +387,44 @@ button {
 }
 
 /* Styles for product details GREG */
+
+/* Start product list quick view --Greg */
+
+.product-detail.quick-view {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.384);
+  max-width: none;
+}
+
+.product-detail.quick-view.show-modal {
+  display: block;
+}
+
+.product-detail.quick-view .product-detail-wrapper {
+  position: relative;
+  padding: 1em;
+  max-width: 500px;
+  margin: auto;
+  background-color: #fff;
+  padding-top: 50px;
+}
+
+.product-detail.quick-view .product-detail-wrapper .close-button-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.product-detail.quick-view .product-detail-wrapper .close-button-container button {
+  padding: 0.5em .8em;
+}
+
+/* End product list quick view --Greg */
 
 /* Start cart list card styles */
 .cart-card {
