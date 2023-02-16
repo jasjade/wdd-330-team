@@ -90,6 +90,7 @@ button {
   border: 0;
   font-size: var(--large-font);
   cursor: pointer;
+  margin: .5em auto;
 }
 .divider {
   border-bottom: 2px solid var(--primary-color);
@@ -294,6 +295,69 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+
+/* new css */
+
+.list-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5em;
+}
+.list-footer > a {
+  /* display: block; */
+  padding: 0.3em 0.5em;
+  background-color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 5px;
+}
+.list-total {
+  text-align: right;
+}
+.list-footer a:link,
+.list-footer a:visited {
+  color: var(--dark-grey);
+}
+
+/* checkout styles */
+.checkout-form {
+  padding: 0.5em;
+}
+.checkout-form legend {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.checkout-form label {
+  display:inline-block;
+}
+.checkout-form input {
+  width: 100%;
+  font-size: 1em;
+  padding: 0.2em;
+  margin: .2em auto 1.2em auto;
+}
+.checkout-form fieldset {
+  margin: 1em auto;
+}
+
+.checkout-summary > ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.checkout-summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-summary input {
+  width: 25%;
+  font-size: 1em;
+}
+
+/* new css */
+
+
 /* Styles for product lists */
 
 .product-card {
@@ -453,16 +517,25 @@ button {
   grid-column: 2;
 }
 
-.cart-card__quantity {
+.cart-remove__item {
   grid-row: 1;
   grid-column: 3;
+  text-align: center;
+}
+.cart-card__quantity {
+  grid-row: 4;
+  grid-column: 2;
 }
 
-.cart-card__price {
-  grid-row: 2;
+.cart-card__unit_price {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.cart-card__total_price {
+  grid-row: 4;
   grid-column: 3;
 }
-
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
