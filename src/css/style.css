@@ -517,16 +517,25 @@ button {
   grid-column: 2;
 }
 
-.cart-card__quantity {
+.cart-remove__item {
   grid-row: 1;
   grid-column: 3;
+  text-align: center;
+}
+.cart-card__quantity {
+  grid-row: 4;
+  grid-column: 2;
 }
 
-.cart-card__price {
-  grid-row: 2;
+.cart-card__unit_price {
+  grid-row: 3;
+  grid-column: 2;
+}
+
+.cart-card__total_price {
+  grid-row: 4;
   grid-column: 3;
 }
-
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
