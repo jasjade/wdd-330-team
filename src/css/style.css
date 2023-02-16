@@ -517,7 +517,7 @@ button {
   grid-column: 2;
 }
 
-.cart-remove__item {
+.cart-remove__item .remove-btn {
   grid-row: 1;
   grid-column: 3;
   text-align: center;

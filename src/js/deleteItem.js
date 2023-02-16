@@ -1,5 +1,6 @@
+//Feature to remove an item from the cart-- Natalia
 //store the all the X's existing in the cart 
-const remove = document.querySelectorAll(".cart-remove__item");
+const remove = document.querySelectorAll(".remove-btn");
 //if there is an X present in the card, iterate as follows
 if (remove.length > 0) {
     remove.forEach((button) => {
