@@ -77,7 +77,7 @@ export default class ProductList {
 
       //Manually set the breadcrumbs -Greg
       const breadcrumbsHome = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.home');
-      breadcrumbsHome.innerHTML =`<a href="/">Home</a>`;
+      breadcrumbsHome.innerHTML = `<a href="/">Home</a>`;
       const breadcrumbsCategory = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.category');
       breadcrumbsCategory.innerHTML = `${this.category.charAt(0).toUpperCase() + this.category.slice(1)} (${list.length} items)`;
 
@@ -92,7 +92,7 @@ export default class ProductList {
     addQuickViewListener(list, modalContainer) {
       //adding event listeners for each quick view buttons
       const quickViewButtons = document.querySelectorAll('.quick-view-button')
-      quickViewButtons.forEach((button) => {
+      quickViewButtons.forEach((button) =>{ 
         button.addEventListener('click', (e) => {
           //extracting the  href value
           //after extracting the href value, extract the product id
