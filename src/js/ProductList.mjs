@@ -1,4 +1,3 @@
-import { doc } from 'prettier';
 import { renderListWithTemplate } from './utils.mjs';
 
 function UrlExists(url) {
@@ -104,7 +103,7 @@ export default class ProductList {
       })
     } 
     
-    async displayModal(list, prodId, modalContainer) {
+    displayModal(list, prodId, modalContainer) {
       //let's do promises to ensure that the listItem is returned
       //before we proceed to the next steps
       let promise = new Promise(function(resolve, reject) {

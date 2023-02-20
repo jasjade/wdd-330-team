@@ -312,6 +312,11 @@ button {
   text-decoration: none;
   border-radius: 5px;
 }
+
+.list-footer.hide a {
+  visibility: hidden;
+}
+
 .list-total {
   text-align: right;
 }
@@ -497,6 +502,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  width: 100%;
 }
 
 .cart-card__image {

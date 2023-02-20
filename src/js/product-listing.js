@@ -22,8 +22,3 @@ productHeader.innerHTML = `Top Products: ${category.charAt(0).toUpperCase() + ca
 
 //Manually set the breadcrumbs -Greg
 //I have transferred this feature in ProductListmjs init
-
-/*
-https://stackoverflow.com/questions/18998797/create-breadcrumbs-dynamically-on-client-side-using-javascript
-
-*/
