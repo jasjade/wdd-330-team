@@ -33,13 +33,33 @@ export default class ShoppingCart {
     constructor(key, parentSelector) {
         this.key = key;
         this.parentSelector = parentSelector;
+        this.total = 0;
+        this.list = [];
+    }
+
+    async init() {
+      this.list = getLocalStorage(this.key) || [];
+      this.calculateListTotal(this.list);
+      this.renderCartContents(this.list);
     }
 
     renderCartContents() {
-        const cartItems = getLocalStorage(this.key) || [];
-        const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+        //const cartItems = getLocalStorage(this.key) || [];
+        const htmlItems = this.list.map((item) => cartItemTemplate(item));
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
-    }   
+        document.querySelector(".list-total").innerText += ` $${this.total.toFixed(2)}`;
+    }
+    
+    //compute the sub-total price of the cart
+    calculateListTotal(list) {
+      //price for each item is computed by finalPrice times quantity
+      const amounts = list.map((item) => item.FinalPrice * item.quantity);
+      //execute the code below if amounts array is not empty
+      if (amounts.length) {
+        this.total = amounts.reduce((sum, item) => sum + item);
+      }
+    }
+
 }
 
 

@@ -39,7 +39,9 @@ export default class CheckoutProcess {
       this.orderTotal = 0;
     }
     init() {
-      this.list = getLocalStorage(this.key);
+      //if local storage is empty, give an empty array instead. this is to prevent error
+      //because this.list is expecting an array
+      this.list = getLocalStorage(this.key) || [];
       this.calculateItemSummary();
     }
     calculateItemSummary() {
@@ -55,9 +57,9 @@ export default class CheckoutProcess {
       );
       //itemNumElement.innerText = this.list.length;
       
-      itemNumElement.innerText = returnCartTotalQuantities('so-cart');
+      itemNumElement.innerText = `${returnCartTotalQuantities('so-cart')} items`;
          // calculate the total of all the items in the cart
-      const amounts = this.list.map((item) => item.FinalPrice);
+      const amounts = this.list.map((item) => item.FinalPrice * item.quantity);
       this.itemTotal = amounts.reduce((sum, item) => sum + item);
       summaryElement.innerText = "$" + this.itemTotal.toFixed(2);
     }
