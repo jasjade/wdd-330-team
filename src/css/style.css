@@ -96,7 +96,23 @@ button {
   border-bottom: 2px solid var(--primary-color);
 }
 /* End utility classes */
-
+/* New register classes --- Natalia */
+.modal {
+  padding: 1em;
+  /* max-width: 60ch; */
+  text-align: center;
+  
+}
+.modal::backdrop {
+  background: rgb(0 0 0 / .5);
+}
+.close-modal {
+ position: absolute;
+ top: 0px;
+ right: 5px;
+ padding: 0.3em;
+}
+/*End new reister classes */
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
@@ -506,7 +522,7 @@ button {
 }
 
 .cart-card__image {
-  grid-row: 1/3;
+  grid-row: 1/4;
   grid-column: 1;
 }
 
@@ -523,14 +539,23 @@ button {
   grid-column: 2;
 }
 
-.cart-remove__item .remove-btn {
+.cart-remove__item {
   grid-row: 1;
   grid-column: 3;
   text-align: center;
+  padding: 0.5em;
+  position: relative;
+  bottom: 5px;
+  left: 50px;
 }
-.cart-card__quantity {
+.cart_qty {
   grid-row: 4;
   grid-column: 2;
+  position: relative;
+  /* display: flex;
+  flex-direction: row; */
+  /* align-items: flex-end; */
+  /* border: 1px solid#303030; */
 }
 
 .cart-card__unit_price {
@@ -542,6 +567,32 @@ button {
   grid-row: 4;
   grid-column: 3;
 }
+/* Styling of the cart quantities buttons---Natalia */
+.decrease_units, .increase_units, .cart-card__quantity{
+padding: .5em;
+position: relative;
+margin: 0;
+}
+
+/* .decrease_units {
+  position: relative;
+  right: 100px;
+}
+*/
+.cart-card__quantity {
+  position: relative;
+  bottom: 40px;
+  left: 30px;
+}
+
+.increase_units{ 
+  position: relative;
+  bottom: 85.5px;
+  left: 58px;
+  margin: 0;
+} 
+/* End of Styling of the cart quantities buttons---Natalia */
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

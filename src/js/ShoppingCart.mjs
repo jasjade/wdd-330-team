@@ -20,7 +20,11 @@ function cartItemTemplate(item) {
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <div class="remove-btn">
     <button class="cart-remove__item" data-id=${item.Id}>X</></button></div>
-    <p class="cart-card__quantity">Quantity: ${item.quantity}</p>
+    <div class="cart_qty">
+    <button class="decrease_units" data-id=${item.Id}>-</button>
+    <p class="cart-card__quantity">${item.quantity}</p>
+    <button class="increase_units" data-id=${item.Id}>+</button>
+    </div>
     <p class="cart-card__unit_price">Unit Price: $${item.FinalPrice}</p>
     <p class="cart-card__total_price">Total: $${subtotal}</p>
     </li>`;
