@@ -568,7 +568,7 @@ button {
   grid-column: 3;
 }
 /* Styling of the cart quantities buttons---Natalia */
-.decrease_units, .increase_units, .cart-card__quantity{
+.decrease_units, .increase_units, .cart-card__quantity {
 padding: .5em;
 position: relative;
 margin: 0;
