@@ -25,8 +25,8 @@ export default class Admin {
     document.querySelector("#loginButton").addEventListener("click", (e) => {
       const email = document.querySelector("#email").value;
       const password = document.querySelector("#password").value;
-      //this.login({ email, password }, this.showOrders.bind(this));
-      this.login()
+      this.login({ email, password }, this.showOrders.bind(this));
+      //this.login()
     });
   }
   async showOrders() {
