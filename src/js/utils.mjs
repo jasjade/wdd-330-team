@@ -29,11 +29,13 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener('click', callback);
 }
-export function getParam(param) {
+export function getParam() {
+///export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get(param);
-  return product;
+  //console.log(urlParams.get(param))
+  const queryParameters = urlParams.toString().split("=");
+  return queryParameters;
 }
 
 export function renderListWithTemplate(

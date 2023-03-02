@@ -112,6 +112,65 @@ button {
  right: 5px;
  padding: 0.3em;
 }
+
+/* Product Search Styling Start -Greg  */
+header .search-bar {
+  white-space: nowrap;
+  margin: auto 0;
+}
+
+header .search-bar {
+  position: relative;
+  width: 25%;
+}
+
+
+header .search-bar__input {
+  background: transparent;
+  width: 100%;
+  border: 2px solid var(--dark-grey);
+  line-height: 27px;
+  padding: 0 0 0 12px;
+  border-radius: 5px;
+}
+
+header .search-bar__submit {
+  background: transparent;
+  border: 0;
+}
+
+.search-bar .search-bar__submit {
+    background: transparent;
+    border: 0;
+    position: absolute;
+    top: 1px;
+    right: 7px;
+    padding: 0;
+    margin: 0;
+    color: var(--dark-grey);
+}
+
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  fill: currentColor;
+}
+
+.icon__fallback-text {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/* Product Search Styling End -Greg  */
+
 /*End new reister classes */
 /* Cart icon styles */
 .cart {

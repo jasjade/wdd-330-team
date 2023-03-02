@@ -1,5 +1,6 @@
 import { renderListWithTemplate } from './utils.mjs';
 
+
 function UrlExists(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
@@ -70,15 +71,24 @@ export default class ProductList {
       const modalContainer = document.querySelector('.product-detail.quick-view .product-detail-wrapper')
       // our dataSource will return a Promise...so we can use await to resolve it.
       //const list = await this.dataSource.getData();
-      const list = await this.dataSource.getData(this.category);
-      // render the list 
-      this.renderList(list);
-
-      //Manually set the breadcrumbs -Greg
+      console.log('ProdList', this.category[1])
       const breadcrumbsHome = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.home');
       breadcrumbsHome.innerHTML = `<a href="/">Home</a>`;
       const breadcrumbsCategory = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.category');
-      breadcrumbsCategory.innerHTML = `${this.category.charAt(0).toUpperCase() + this.category.slice(1)} (${list.length} items)`;
+      let list
+
+      if(this.category[0] == 'category') {
+        list = await this.dataSource.getData(this.category[1]);
+        //Manually set the breadcrumbs -Greg
+        breadcrumbsCategory.innerHTML = `${this.category[1].charAt(0).toUpperCase() + this.category[1].slice(1)} (${list.length} items)`;
+      }
+
+      if(this.category[0] == 'search') {
+
+      }
+      this.renderList(list);
+
+
 
       //add event listener to quick view buttons
       this.addQuickViewListener(list, modalContainer);

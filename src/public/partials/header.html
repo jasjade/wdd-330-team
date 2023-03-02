@@ -3,6 +3,19 @@
         <!--should be /index.html vs index.html for the link to refer to the root index-->
         <a href="../../index.html"> Sleep<span class="highlight">Outside</span></a>
       </div>
+
+      <form action="/product-listing/index.html" method="get" class="search-bar" role="search">
+        <input type="text" placeholder="Product Search" name="search" id="searchInput" class="searchInput search-bar__input">
+        <!-- <input type="hidden" name="type" value="product,page">
+        <input type="hidden" name="options[unavailable_products]" value="last">
+        <input type="hidden" name="options[prefix]" value="last">
+        <input type="hidden" value="Search"> -->
+        <button type="submit" value="Search" class="search-bar__submit">
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-search" viewBox="0 0 20 20"><path fill="#444" d="M18.64 17.02l-5.31-5.31c.81-1.08 1.26-2.43 1.26-3.87C14.5 4.06 11.44 1 7.75 1S1 4.06 1 7.75s3.06 6.75 6.75 6.75c1.44 0 2.79-.45 3.87-1.26l5.31 5.31c.45.45 1.26.54 1.71.09.45-.36.45-1.17 0-1.62zM3.25 7.75c0-2.52 1.98-4.5 4.5-4.5s4.5 1.98 4.5 4.5-1.98 4.5-4.5 4.5-4.5-1.98-4.5-4.5z"></path></svg>
+          <span class="icon__fallback-text">Search</span>
+        </button>
+      </form>
+
       <div class="cart">
         <a href="../../cart/index.html">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
