@@ -42,8 +42,10 @@ export default class ProductDetails {
     this.dataSource = dataSource;
   }
   async init() {
-    this.product = await this.dataSource.findProductById(this.productId);
-    console.log(this.product);
+    this.product = await this.dataSource.findProductById(this.productId[1]);
+    console.log('this.productId',this.productId);
+    console.log('this.product',this.product);
+    
     //I will change the 'main' selector to 'product-detail'
     // because int the product-pages/index.html
     // we already have this section prepared

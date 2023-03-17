@@ -4,7 +4,8 @@ import ProductList from "./ProductList.mjs";
 //console.log('no paso :(')
 loadHeaderFooter();
 
-const category = getParam("category");
+const category = getParam();
+// console.log("prd-listing", category)
 // first create an instance of our ExternalServices class.
 const dataSource = new ExternalServices();
 // then get the element we want the product list to render in
@@ -16,9 +17,6 @@ const listing = new ProductList(category, dataSource, element);
 //check list of products in the console
 listing.init();
 
-//Change the header based on the category
-const productHeader = document.querySelector('.products > h2');
-productHeader.innerHTML = `Top Products: ${category.charAt(0).toUpperCase() + category.slice(1)}`
 
 //Manually set the breadcrumbs -Greg
 //I have transferred this feature in ProductListmjs init
