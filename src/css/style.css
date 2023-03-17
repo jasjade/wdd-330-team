@@ -192,24 +192,45 @@ header .search-bar__submit {
   line-height: 22px;
 }
 
-.cart.shake svg{
-  animation: animateCart 1.2s linear .8s;
+.cart.shake svg {
+  animation: animateCart 1.2s linear 0.8s;
 }
 
 @keyframes animateCart {
-  0% { transform:  rotate(0deg);
-    transform: scale(1.4); 
-    }
-  10% { transform: scale(1.4) rotate(-10deg); }
-  20% { transform: scale(1.4) rotate(10deg); }
-  30% { transform: scale(1.4) rotate(0deg); }
-  40% { transform: scale(1.4) rotate(10deg); }
-  50% { transform: scale(1.4) rotate(-10deg);}
-  60% { transform: scale(1.4) rotate(0deg); }
-  70% { transform: scale(1.4) rotate(-10deg); }
-  80% { transform: scale(1.4) rotate(10deg); }
-  90% { transform: scale(1) rotate(0deg);}
-  100% { transform: scale(1) rotate(-10deg);}
+  0% {
+    transform: rotate(0deg);
+    transform: scale(1.4);
+  }
+  10% {
+    transform: scale(1.4) rotate(-10deg);
+  }
+  20% {
+    transform: scale(1.4) rotate(10deg);
+  }
+  30% {
+    transform: scale(1.4) rotate(0deg);
+  }
+  40% {
+    transform: scale(1.4) rotate(10deg);
+  }
+  50% {
+    transform: scale(1.4) rotate(-10deg);
+  }
+  60% {
+    transform: scale(1.4) rotate(0deg);
+  }
+  70% {
+    transform: scale(1.4) rotate(-10deg);
+  }
+  80% {
+    transform: scale(1.4) rotate(10deg);
+  }
+  90% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(-10deg);
+  }
 }
 
 /* flying image add to cart animation */
@@ -220,48 +241,47 @@ header .search-bar__submit {
   top: var(--top);
   border-bottom: 0px;
   max-width: unset;
-  animation: fly_to_cart .7s linear;
+  animation: fly_to_cart 0.7s linear;
 }
 
 @keyframes fly_to_cart {
   0% {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   20% {
-    left: calc(var(--left)*.8);
-    top: calc(var(--top)*.8);
-    width: calc(var(--width)*.8);
+    left: calc(var(--left) * 0.8);
+    top: calc(var(--top) * 0.8);
+    width: calc(var(--width) * 0.8);
   }
 
   40% {
-    left: calc(var(--left)*.6);
-    top: calc(var(--top)*.6);
-    width: calc(var(--width)*.6);
-    opacity: .4;
+    left: calc(var(--left) * 0.6);
+    top: calc(var(--top) * 0.6);
+    width: calc(var(--width) * 0.6);
+    opacity: 0.4;
   }
 
   60% {
-    left: calc(var(--left)*.4);
-    top: calc(var(--top)*.4);
-    width: calc(var(--width)*.2);
-    opacity: .3;
+    left: calc(var(--left) * 0.4);
+    top: calc(var(--top) * 0.4);
+    width: calc(var(--width) * 0.2);
+    opacity: 0.3;
   }
 
   80% {
-    left: calc(var(--left)*.2);
-    top: calc(var(--top)*.2);
-    width: calc(var(--width)*.2);
-    opacity: .2;
+    left: calc(var(--left) * 0.2);
+    top: calc(var(--top) * 0.2);
+    width: calc(var(--width) * 0.2);
+    opacity: 0.2;
   }
 
   100% {
-    left: calc(var(--left)*0);
-    top: calc(var(--top)*0);
-    width: calc(var(--width)*0);
-    opacity: .1;
+    left: calc(var(--left) * 0);
+    top: calc(var(--top) * 0);
+    width: calc(var(--width) * 0);
+    opacity: 0.1;
   }
-
 }
 
 .cart svg {
@@ -299,7 +319,7 @@ header .search-bar__submit {
 }
 
 .breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li:hover a {
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 .breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li:last-child::after {
@@ -310,9 +330,7 @@ header .search-bar__submit {
   color: #303030a8;
 }
 
-
 /* End Breadcrumb Styles Greg */
-
 
 /* product grid styles */
 .product-grid {
@@ -477,7 +495,6 @@ header .search-bar__submit {
   border-radius: 3px;
 }
 
-
 .product-list .product-card__suggested {
   font-size: 1rem;
   text-decoration: line-through;
@@ -564,8 +581,11 @@ header .search-bar__submit {
   right: 10px;
 }
 
-.product-detail.quick-view .product-detail-wrapper .close-button-container button {
-  padding: 0.5em .8em;
+.product-detail.quick-view
+  .product-detail-wrapper
+  .close-button-container
+  button {
+  padding: 0.5em 0.8em;
 }
 
 /* End product list quick view --Greg */
@@ -626,6 +646,25 @@ header .search-bar__submit {
   grid-row: 4;
   grid-column: 3;
 }
+
+
+/* alert styles */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+  border: 1px solid darkorange;
+}
+.alert > p {
+  margin: 0;
+}
+
+.alert > span:hover {
+  cursor: pointer;
+}
+=======
 /* Styling of the cart quantities buttons---Natalia */
 .decrease_units, .increase_units, .cart-card__quantity {
 padding: .5em;
@@ -652,6 +691,7 @@ margin: 0;
 } 
 /* End of Styling of the cart quantities buttons---Natalia */
 
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -675,7 +715,6 @@ footer {
 * Adding  Tablet View --GREG
 */
 @media screen and (max-width: 850px) {
-
   /* Adjust disable max with so the card can expand to 45% width in tablet */
   .product-card {
     max-width: unset;
@@ -683,7 +722,6 @@ footer {
 }
 
 @media screen and (max-width: 450px) {
-
   /* Adjust disable max with so the card can expand to 100% width in phones */
   .product-card {
     flex: 1 1 100%;
