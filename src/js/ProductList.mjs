@@ -68,30 +68,66 @@ export default class ProductList {
       this.listElement = listElement;
     }
     async init() {
+      
       const modalContainer = document.querySelector('.product-detail.quick-view .product-detail-wrapper')
       // our dataSource will return a Promise...so we can use await to resolve it.
       //const list = await this.dataSource.getData();
-      console.log('ProdList', this.category[1])
+      // console.log('ProdList', this.category[1])
       const breadcrumbsHome = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.home');
       breadcrumbsHome.innerHTML = `<a href="/">Home</a>`;
       const breadcrumbsCategory = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.category');
-      let list
+      
 
       if(this.category[0] == 'category') {
+        let list
+        //Change the header based on the category
+        const productHeader = document.querySelector('.products > h2');
+        productHeader.innerHTML = `Top Product ${this.category[0].charAt(0).toUpperCase() + this.category[0].slice(1)}: ${this.category[1].charAt(0).toUpperCase() + this.category[1].slice(1)}`
+
         list = await this.dataSource.getData(this.category[1]);
         //Manually set the breadcrumbs -Greg
         breadcrumbsCategory.innerHTML = `${this.category[1].charAt(0).toUpperCase() + this.category[1].slice(1)} (${list.length} items)`;
+        this.renderList(list);
+        //add event listener to quick view buttons
+        this.addQuickViewListener(list, modalContainer);
       }
 
       if(this.category[0] == 'search') {
+        
+          let categories = ['tents', 'backpacks', 'sleeping-bags', 'hammocks']
+          let sanitizedKeyword = this.category[1].replace('+', ' ')
+          //Change the header based on the category
+          const productHeader = document.querySelector('.products > h2');
+          breadcrumbsCategory.innerHTML = `Search Results: ${sanitizedKeyword.charAt(0).toUpperCase() + sanitizedKeyword.slice(1)}`
 
+          let list = []
+          let counter = 0
+
+          categories.forEach(async category => {
+            
+            let temps = await this.dataSource.getData(category);
+            temps = temps.filter((x) => {
+              // console.log('x', x)
+              if (x.Brand.Name.toLowerCase().includes(sanitizedKeyword.toLowerCase()) 
+                || x.NameWithoutBrand.toLowerCase().includes(sanitizedKeyword.toLowerCase()) 
+                || x.Category.toLowerCase().includes(sanitizedKeyword.toLowerCase()) ) {
+                return x
+              }
+            })
+            list = list.concat(temps)
+            console.log('list', list)
+            counter = counter + 1
+            if (counter == 4) {
+              if(list.length) {
+                productHeader.innerHTML = `Search Results: ${sanitizedKeyword.charAt(0).toUpperCase() + sanitizedKeyword.slice(1)}`
+                this.renderList(list);
+              } else {
+                productHeader.innerHTML = `0 search results`
+              }
+            }
+          })
       }
-      this.renderList(list);
 
-
-
-      //add event listener to quick view buttons
-      this.addQuickViewListener(list, modalContainer);
     }
 
     renderList(list) {
