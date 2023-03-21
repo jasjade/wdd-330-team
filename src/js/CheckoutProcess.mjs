@@ -106,8 +106,9 @@ export default class CheckoutProcess {
         location.assign("/checkout/success.html");
       } catch (err) {
         removeAllAlerts();
-        for (let message in err.message) {
-          alertMessage(err.message[message]);
+        const jsonResponse = await err.message;
+        for (let message in jsonResponse) {
+          alertMessage(jsonResponse[message]);
         }
   
         console.log(err);

@@ -1,6 +1,7 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
+import Alert from "./Alert.mjs";
 //console.log('no paso :(')
 loadHeaderFooter();
 
@@ -22,3 +23,7 @@ productHeader.innerHTML = `Top Products: ${category.charAt(0).toUpperCase() + ca
 
 //Manually set the breadcrumbs -Greg
 //I have transferred this feature in ProductListmjs init
+
+//create an instance of Alert class. --  Natalia
+const announcements = new Alert();
+announcements.messageToDisplay();

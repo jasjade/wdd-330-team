@@ -330,6 +330,26 @@ button {
   color: var(--dark-grey);
 }
 
+/*item added to Cart alert -- Natalia */
+.alert-list {
+  /* visibility: hidden; */
+  min-width: 250px;
+  margin: auto;
+  text-align: center;
+  padding: 1.5rem;
+
+}
+
+/* .alert-list.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+} */
+
+/*End of item added to Cart alert -- Natalia */
+
+
+
 
 /* new css */
 
@@ -605,7 +625,7 @@ button {
 .alert > span:hover {
   cursor: pointer;
 }
-=======
+
 /* Styling of the cart quantities buttons---Natalia */
 .decrease_units, .increase_units, .cart-card__quantity {
 padding: .5em;
