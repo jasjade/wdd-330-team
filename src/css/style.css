@@ -172,6 +172,48 @@ header .search-bar__submit {
 /* Product Search Styling End -Greg  */
 
 /*End new reister classes */
+
+/* Wishlist icon styles start */
+.cart-wish,
+.product-detail__add {
+  display: flex;
+}
+
+.cart-wish .wish-link {
+  text-decoration: none;
+}
+
+.cart-wish .wish-link svg {
+  margin: 8px 10px 0 0;
+}
+
+.cart-wish .wish-link svg #Vector {
+  stroke: #f26225;
+}
+
+.product-detail .wish-link {
+  margin-right: auto;
+  padding: 0;
+  background-color: transparent;
+  margin-left: 0;
+}
+
+.product-detail .wish-link svg {
+  background-color: #f26225;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.product-detail .wish-link svg #Vector {
+  stroke: #fff;
+}
+
+.product-detail #addToCart{
+  margin: 10px 20px 15px auto;
+  border-radius: 4px;
+}
+/* Wishlist icon styles end */
+
 /* Cart icon styles */
 .cart {
   padding-top: 1em;
@@ -710,6 +752,18 @@ margin: 0;
   margin: 0;
 } 
 /* End of Styling of the cart quantities buttons---Natalia */
+
+
+/* Wishlist page styling by GREG Start*/ 
+.product-list.wish-list .cart-card.divider:last-child {
+  border-bottom: 0px;
+}
+
+.moveToCart {
+  margin-bottom: 30px;
+  margin-left: 0;
+}
+/* Wishlist page styling by GREG End*/ 
 
 
 @media screen and (min-width: 500px) {

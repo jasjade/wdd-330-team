@@ -140,3 +140,77 @@ export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
+
+export function addToLocalByArray(product, productId, key) {
+  let Data = getLocalStorage(key);
+  if (Data) {
+    let tent = 1;
+    for (let i = 0; i < Data.length; i++) {
+      if (Data[i].Id == productId) {
+        
+        Data[i].quantity++;
+        tent = 0;
+      }
+    }
+    if (tent == 1) {
+      product.quantity = 1;
+      Data.push(product);
+    }
+  } else {
+    Data = [];
+    product.quantity = 1;
+    Data.push(product);
+  }
+  setLocalStorage(key, Data);
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+export function addToLocalByArray(product, key) {
+  // this.list = getLocalStorage(this.key) || [];
+  let Data = getLocalStorage(key) || []
+
+  if (Data.length == 0) {
+    Data.push(product)
+    setLocalStorage(key , Data)
+  }
+  // console.log(Data.length)
+
+  if(Data) {
+    let duplicate = Data.filter((item) => {
+      // console.log("item.Id", item.Id)
+      // console.log("this.product.Id",this.product.Id)
+       if (item.Id == product.Id) {
+         return 1
+       }
+    })
+
+    // console.log("duplicate.length",duplicate.length)
+    if (duplicate == 0) {
+      // console.log("no duplicate -called")
+        Data.push(product)
+        setLocalStorage(key , Data);
+    }
+  }
+
+  // console.log("last", Data.length)
+   
+}
+
+
+
+
+*/

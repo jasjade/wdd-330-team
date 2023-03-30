@@ -1,6 +1,5 @@
 //Feature to remove an item from the cart-- Natalia
-
-import { doc } from "prettier";
+import {addToLocalByArray} from '../js/utils.mjs';
 
 //store all the X's existing in the cart 
 const remove = document.querySelectorAll(".remove-btn");
@@ -11,21 +10,40 @@ if (remove.length > 0) {
         button.addEventListener('click', (e) => {
         //get the Id of the item selected from the DOM
         const item = e.target.dataset.id;
+        const key = e.target.dataset.key;
         //delete the item, pass it as argument to the deleteProduct function
-        deleteProduct(item);
+        deleteProduct(item, key);
     });
     })
 } else {
     //if no X (length=0), display a message
-    document.querySelector(".list-total").textContent = "Your cart is empty";
+    document.querySelector(".list-total").textContent = "No Items Found";
 }
 
-function deleteProduct(itemIdRemoved) { 
+const move = document.querySelectorAll(".moveToCart");
+if (move.length > 0) {
+    move.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            const itemID = e.target.dataset.id;
+            const key = e.target.dataset.key;
+            moveProduct(itemID, key)
+            deleteProduct(itemID, key);
+        })
+    })
+}
+
+function moveProduct(itemID, key) {
+    let wish = JSON.parse(localStorage.getItem(key));
+    let wishItem = wish.filter((item) => item.Id == itemID);
+    addToLocalByArray(wishItem[0], itemID, "so-cart")
+}
+
+function deleteProduct(itemIdRemoved, key) { 
     //remove the product from the localstorage
-    let cart = JSON.parse(localStorage.getItem("so-cart"));
+    let cart = JSON.parse(localStorage.getItem(key));
     cart = cart.filter((item) => item.Id !== itemIdRemoved);
     //set the localstorage
-    localStorage.setItem("so-cart", JSON.stringify(cart));
+    localStorage.setItem(key, JSON.stringify(cart));
 
     //reload the page
     window.location.reload();
