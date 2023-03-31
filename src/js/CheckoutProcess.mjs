@@ -1,4 +1,4 @@
-import { getLocalStorage, returnCartTotalQuantities, alertMessage, removeAllAlerts, setLocalStorage} from "./utils.mjs";
+import { getLocalStorage, returnTotalQuantities, alertMessage, removeAllAlerts, setLocalStorage} from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
@@ -67,7 +67,7 @@ export default class CheckoutProcess {
         // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
       //this.shipping = 10 + (this.list.length - 1) * 2;
       console.log('test')
-      this.shipping = 10 + (returnCartTotalQuantities('so-cart') - 1) * 2;
+      this.shipping = 10 + (returnTotalQuantities('so-cart') - 1) * 2;
       this.tax = (this.itemTotal * 0.06).toFixed(2);
       this.orderTotal = (
         parseFloat(this.itemTotal) +
