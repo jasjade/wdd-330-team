@@ -183,6 +183,7 @@ header .search-bar__submit {
   text-decoration: none;
   position: relative;
   margin: 8px 20px 0 0;
+  color: var(--dark-grey);
 }
 
 .cart-wish .wish-link::after {
