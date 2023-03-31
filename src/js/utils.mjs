@@ -53,12 +53,13 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
 
-export function renderCartSuperscript(data) {
+export function renderSuperscripts(data) {
   const cartSuperscript = document.querySelector("header .cart");
-  cartSuperscript.style.cssText = `--item : '${data}';`
-  //superscriptContainer.innerHTML = `${data}`;
-  //superscriptContainer.setAttribute('data-product-count', data);
-  //cartElement.style.cssText = `--item : '${data}';`
+  cartSuperscript.style.cssText = `--item : '${data[0]}';`
+
+  const wishSuperscript = document.querySelector("header .wish-link");
+  wishSuperscript.style.cssText = `--item : '${data[1]}';`
+
 }
  
 export function renderWithTemplate(
@@ -73,20 +74,20 @@ export function renderWithTemplate(
   }
 }
 
-export function returnCartTotalQuantities(key) {
-  let cartItems = getLocalStorage(key) || [];
-  let cartTotalQuantity = 0
+export function returnTotalQuantities(key) {
+  let localStorageItems = getLocalStorage(key) || [];
+  let localStorageTotalQuantity = 0
   // keys.forEach(key => {
   //   let innerCart = getLocalStorage(key);
   //   if (innerCart) {
   //     innerCart.forEach( item => cartItems.push(item));
   //   }
   // });
-  cartItems.forEach(item => {
-    cartTotalQuantity += item.quantity;
+  localStorageItems.forEach(item => {
+    localStorageTotalQuantity += item.quantity;
   });
 
-  return cartTotalQuantity
+  return localStorageTotalQuantity
 }
 
 
@@ -101,10 +102,12 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector('#main-header');
   const footerTemplate = await loadTemplate('../partials/footer.html');
   const footerElement = document.querySelector('#main-footer');
-  const cartTotalQuantity = returnCartTotalQuantities('so-cart');
+  const cartTotalQuantity = returnTotalQuantities('so-cart');
+  const wishTotalQuantity = returnTotalQuantities('so-wish');
+  let data = [cartTotalQuantity, wishTotalQuantity]
   //const cartQuantity = returnCartItems(['so-cart']).length;
 
-  renderWithTemplate(headerTemplate, headerElement, cartTotalQuantity, renderCartSuperscript);
+  renderWithTemplate(headerTemplate, headerElement, data, renderSuperscripts);
   renderWithTemplate(footerTemplate, footerElement);
 }
 
@@ -140,3 +143,113 @@ export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
 }
+
+export function addToLocalByArray(product, productId, key) {
+  let Data = getLocalStorage(key);
+  if (Data) {
+    let tent = 1;
+    for (let i = 0; i < Data.length; i++) {
+      if (Data[i].Id == productId) {
+        
+        Data[i].quantity++;
+        tent = 0;
+      }
+    }
+    if (tent == 1) {
+      product.quantity = 1;
+      Data.push(product);
+    }
+  } else {
+    Data = [];
+    product.quantity = 1;
+    Data.push(product);
+  }
+  setLocalStorage(key, Data);
+   
+}
+
+export function deleteProductLocalStorage(itemIdRemoved, key) { 
+  let cart = JSON.parse(localStorage.getItem(key));
+  cart = cart.filter((item) => item.Id !== itemIdRemoved);
+  //set the localstorage
+  localStorage.setItem(key, JSON.stringify(cart));
+}
+
+
+export function toggleToLocalByArray(product, key) {
+  // this.list = getLocalStorage(this.key) || [];
+  let Data = getLocalStorage(key) || []
+
+  if (Data.length == 0) {
+    Data.push(product)
+    setLocalStorage(key , Data)
+  }
+  // console.log(Data.length)
+
+  if(Data) {
+    let duplicate = Data.filter((item) => {
+      // console.log("item.Id", item.Id)
+      // console.log("this.product.Id",this.product.Id)
+       if (item.Id == product.Id) {
+         return 1
+       }
+    })
+
+    // console.log("duplicate.length",duplicate.length)
+    if (duplicate == 0) {
+      // console.log("no duplicate -called")
+        Data.push(product)
+        setLocalStorage(key , Data);
+    }
+  }
+
+  // console.log("last", Data.length)
+   
+}
+
+
+
+
+
+
+
+
+
+
+/*
+
+export function addToLocalByArray(product, key) {
+  // this.list = getLocalStorage(this.key) || [];
+  let Data = getLocalStorage(key) || []
+
+  if (Data.length == 0) {
+    Data.push(product)
+    setLocalStorage(key , Data)
+  }
+  // console.log(Data.length)
+
+  if(Data) {
+    let duplicate = Data.filter((item) => {
+      // console.log("item.Id", item.Id)
+      // console.log("this.product.Id",this.product.Id)
+       if (item.Id == product.Id) {
+         return 1
+       }
+    })
+
+    // console.log("duplicate.length",duplicate.length)
+    if (duplicate == 0) {
+      // console.log("no duplicate -called")
+        Data.push(product)
+        setLocalStorage(key , Data);
+    }
+  }
+
+  // console.log("last", Data.length)
+   
+}
+
+
+
+
+*/
