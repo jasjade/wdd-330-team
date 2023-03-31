@@ -1,9 +1,8 @@
 import { getLocalStorage } from "./utils.mjs";
-//import { deleteItem } from "./deleteItem.js"; 
 
 
 
-function cartItemTemplate(item) {
+function wishItemTemplate(item) {
 
   const newItem = `<li class="cart-card divider">
     <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
@@ -32,22 +31,20 @@ export default class WishList {
     constructor(key, parentSelector) {
         this.key = key;
         this.parentSelector = parentSelector;
-        this.total = 0;
         this.list = [];
     }
 
     async init() {
       this.list = getLocalStorage(this.key) || [];
-      this.renderCartContents(this.list);
+      this.renderWishContents(this.list);
     }
 
-    renderCartContents() {
+    renderWishContents() {
         //const cartItems = getLocalStorage(this.key) || [];
-        const htmlItems = this.list.map((item) => cartItemTemplate(item));
+        const htmlItems = this.list.map((item) => wishItemTemplate(item));
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
     }
-    
-    //compute the sub-total price of the cart
+
 
 
 }
