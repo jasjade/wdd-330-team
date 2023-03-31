@@ -181,10 +181,22 @@ header .search-bar__submit {
 
 .cart-wish .wish-link {
   text-decoration: none;
+  position: relative;
+  margin: 8px 20px 0 0;
 }
 
-.cart-wish .wish-link svg {
-  margin: 8px 10px 0 0;
+.cart-wish .wish-link::after {
+  position: absolute;
+  content: var(--item);
+  top: -2px;
+  right: -15px;
+  background-color: var(--primary-color);
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 26px;
+  text-align: center;
 }
 
 .cart-wish .wish-link svg #Vector {
@@ -208,9 +220,57 @@ header .search-bar__submit {
   stroke: #fff;
 }
 
+
+.product-detail .wish-link.wishRemoved svg {
+  background-color: transparent;
+  border: 3px solid #f26225;
+}
+
+.product-detail .wish-link.wishRemoved svg #Vector {
+  stroke: #f26225;
+}
+
+
 .product-detail #addToCart{
   margin: 10px 20px 15px auto;
   border-radius: 4px;
+}
+
+.product-detail .wishStatus {
+  background-color: #303030;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  text-transform: uppercase;
+  margin-top: 10px;
+  opacity: 0;
+  animation: animateWish 2s ease-in;
+}
+
+@keyframes animateWish {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: .4;
+  }
+
+  40% {
+    opacity: .6;
+  }
+
+  60% {
+    opacity: .8;
+  }
+
+  80% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 /* Wishlist icon styles end */
 
@@ -225,13 +285,14 @@ header .search-bar__submit {
   position: absolute;
   content: var(--item);
   top: 5px;
-  right: -5px;
+  right: -12px;
   background-color: var(--primary-color);
-  height: 21px;
-  width: 21px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
   font-size: 12px;
-  line-height: 22px;
+  line-height: 26px;
+  text-align: center;
 }
 
 .cart.shake svg {

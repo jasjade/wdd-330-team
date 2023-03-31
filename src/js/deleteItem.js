@@ -1,5 +1,5 @@
 //Feature to remove an item from the cart-- Natalia
-import {addToLocalByArray} from '../js/utils.mjs';
+import {addToLocalByArray, deleteProductLocalStorage} from '../js/utils.mjs';
 
 //store all the X's existing in the cart 
 const remove = document.querySelectorAll(".remove-btn");
@@ -38,13 +38,9 @@ function moveProduct(itemID, key) {
     addToLocalByArray(wishItem[0], itemID, "so-cart")
 }
 
-function deleteProduct(itemIdRemoved, key) { 
-    //remove the product from the localstorage
-    let cart = JSON.parse(localStorage.getItem(key));
-    cart = cart.filter((item) => item.Id !== itemIdRemoved);
-    //set the localstorage
-    localStorage.setItem(key, JSON.stringify(cart));
-
+//move the functionality to local storage that I may reuse
+function deleteProduct(itemID, key) {
+    deleteProductLocalStorage(itemID, key)
     //reload the page
     window.location.reload();
 }

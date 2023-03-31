@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, returnCartTotalQuantities, renderCartSuperscript, addToLocalByArray} from '../js/utils.mjs';
+import { getLocalStorage, setLocalStorage, returnTotalQuantities, renderSuperscripts, addToLocalByArray, deleteProductLocalStorage} from '../js/utils.mjs';
 
 //import { getLocalStorage, setLocalStorage } from '../js/utils.mjs'; --
 
@@ -32,14 +32,7 @@ function productDetailsDisplay(product) {
           </svg>
         </button>
       </div>
-
-      <!-- animated flying image 
-      <img
-      class='divider image active'
-      src='${product.Image}'
-      alt='${product.NameWithoutBrand}'
-      /> 
-      -->`;
+    `;
   }
 
 export default class ProductDetails {
@@ -74,6 +67,30 @@ export default class ProductDetails {
     const breadcrumbsProductName = document.querySelector('.breadcrumbs-container .breadcrumbs-ul .breadcrumbs-li.product-name');
     breadcrumbsProductName.innerHTML = this.product.NameWithoutBrand;
 
+    //this is for the wishbutton style
+    let wishbutton = document.querySelector("#addToWishList")
+    let Data = getLocalStorage("so-wish")
+    if (Data == null) {
+      wishbutton.classList.add("wishRemoved")
+    }
+
+    if (Data) {
+      let duplicate = Data.filter((item) => {
+        if (item.Id == this.product.Id) {
+          return 1
+        }
+      })
+
+      if (duplicate.length > 0) {
+        wishbutton.classList.remove("wishRemoved")
+      }
+
+      if (duplicate.length == 0) {
+        wishbutton.classList.add("wishRemoved")
+      }
+      
+    }
+
 
     //flyToCart()
     document
@@ -82,7 +99,7 @@ export default class ProductDetails {
     
     document
     .getElementById('addToWishList')
-    .addEventListener('click', this.addToWish.bind(this));
+    .addEventListener('click', this.toggleToWish.bind(this));
   }
 
   addToCart() {
@@ -91,8 +108,32 @@ export default class ProductDetails {
     //setLocalStorage('so-cart', this.product);
   }
 
-  addToWish() {
-    addToLocalByArray(this.product, this.productId, "so-wish")
+  toggleToWish() {
+    let wishbutton = document.querySelector("#addToWishList")
+    let Data = getLocalStorage("so-wish")
+    //console.log(Data)
+    if(Data == null) {
+      addToLocalByArray(this.product, this.productId, "so-wish")
+    }
+
+    if(Data) {
+      let duplicate = Data.filter((item) => {
+         if (item.Id == this.product.Id) {
+           return 1
+         }
+      })
+      if (duplicate == 0) {
+        addToLocalByArray(this.product, this.productId, "so-wish")
+        wishbutton.classList.remove("wishRemoved")
+        wishListPromt("Added to Wishlist")
+      } else {
+        deleteProductLocalStorage(this.product.Id, "so-wish")
+        wishbutton.classList.add("wishRemoved")
+        wishListPromt("Removed from Wishlist")
+      }
+
+    }
+    
   }
 
 
@@ -106,7 +147,18 @@ export default class ProductDetails {
   }
 }
 
+function wishListPromt(prompt) {
+  const wishPrompt = document.createElement("div");
+  wishPrompt.classList.add("wishStatus")
+  wishPrompt.innerHTML = prompt
+  document.querySelector(".product-detail").appendChild(wishPrompt)
+  setTimeout(() => {
+    document.querySelector(".product-detail").removeChild(wishPrompt);
+    renderSuperscripts([returnTotalQuantities('so-cart'),returnTotalQuantities('so-wish')]);
+  }, 2000)
+  
 
+}
 
 function flyToCart() {
   const cartElement = document.querySelector('.cart');
@@ -132,7 +184,7 @@ function flyToCart() {
   setTimeout(() => {
     cartElement.removeChild(imageClone);
     cartElement.classList.remove('shake');
-    renderCartSuperscript(returnCartTotalQuantities('so-cart'));
+    renderSuperscripts([returnTotalQuantities('so-cart'),returnTotalQuantities('so-wish')]);
     //renderCartSuperscript(cartQuantity)
 }, 2000);
 
