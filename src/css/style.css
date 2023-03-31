@@ -522,6 +522,11 @@ header .search-bar__submit {
   align-items: center;
   padding: 0 0.5em;
 }
+
+.wishlist-page .list-footer {
+  justify-content: end;
+}
+
 .list-footer > a {
   /* display: block; */
   padding: 0.3em 0.5em;

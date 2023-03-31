@@ -19,7 +19,7 @@ if (remove.length > 0) {
     })
 } else {
     //if no X (length=0), display a message
-    document.querySelector(".list-total").textContent = "Your Cart is Empty";
+    document.querySelector(".list-total").textContent = "Wishlist is empty";
 }
 
 const move = document.querySelectorAll(".moveToCart");

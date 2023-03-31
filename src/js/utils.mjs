@@ -176,6 +176,19 @@ export function deleteProductLocalStorage(itemIdRemoved, key) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 export function toggleToLocalByArray(product, key) {
   // this.list = getLocalStorage(this.key) || [];
   let Data = getLocalStorage(key) || []
@@ -206,17 +219,6 @@ export function toggleToLocalByArray(product, key) {
   // console.log("last", Data.length)
    
 }
-
-
-
-
-
-
-
-
-
-
-/*
 
 export function addToLocalByArray(product, key) {
   // this.list = getLocalStorage(this.key) || [];
